@@ -1,0 +1,860 @@
+fileFormatVersion: 2
+guid: b6f307b6ff9c7bf45aff919a6ecb2fb9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6438915670754470201
+    second: pergamino_choroto_0
+  - first:
+      213: -1429219194834898922
+    second: pergamino_choroto_1
+  - first:
+      213: -7849201921576220020
+    second: pergamino_choroto_2
+  - first:
+      213: 8917563993110565304
+    second: pergamino_choroto_3
+  - first:
+      213: 1037232260107766623
+    second: pergamino_choroto_4
+  - first:
+      213: 1189380934109634710
+    second: pergamino_choroto_5
+  - first:
+      213: -3811453083921101977
+    second: pergamino_choroto_6
+  - first:
+      213: 2019951042938047670
+    second: pergamino_choroto_7
+  - first:
+      213: -6452672598095471991
+    second: pergamino_choroto_8
+  - first:
+      213: -7334784602341753020
+    second: pergamino_choroto_9
+  - first:
+      213: 8936379636342643427
+    second: pergamino_choroto_10
+  - first:
+      213: 7727306695021336369
+    second: pergamino_choroto_11
+  - first:
+      213: 6422381937383012930
+    second: pergamino_choroto_12
+  - first:
+      213: 7148070386494493457
+    second: pergamino_choroto_13
+  - first:
+      213: 552525093056430244
+    second: pergamino_choroto_14
+  - first:
+      213: 6293091836516604960
+    second: pergamino_choroto_15
+  - first:
+      213: -8436491820000958108
+    second: pergamino_choroto_16
+  - first:
+      213: -245984324222494264
+    second: pergamino_choroto_17
+  - first:
+      213: -8634219216856153245
+    second: pergamino_choroto_18
+  - first:
+      213: -7377244456859220920
+    second: pergamino_choroto_19
+  - first:
+      213: -2844093438777982538
+    second: pergamino_choroto_20
+  - first:
+      213: 3145859014493153225
+    second: pergamino_choroto_21
+  - first:
+      213: 222118106424985927
+    second: pergamino_choroto_22
+  - first:
+      213: -1267263905668520037
+    second: pergamino_choroto_23
+  - first:
+      213: 7368150882986066746
+    second: pergamino_choroto_24
+  - first:
+      213: -5360318021341269495
+    second: pergamino_choroto_25
+  - first:
+      213: 4766708054929462713
+    second: pergamino_choroto_26
+  - first:
+      213: -1101177401835421544
+    second: pergamino_choroto_27
+  - first:
+      213: -5520136722398304174
+    second: pergamino_choroto_28
+  - first:
+      213: -893186731159947903
+    second: pergamino_choroto_29
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: 29
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pergamino_choroto_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2198.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6dbf1ff4064a6a0800000000000000
+      internalID: -6438915670754470201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_1
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 2198.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61032b1f6b46a2ce0800000000000000
+      internalID: -1429219194834898922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_2
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 2198.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ac22e6078021390800000000000000
+      internalID: -7849201921576220020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_3
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 2198.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b15b27543d81cb70800000000000000
+      internalID: 8917563993110565304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_4
+      rect:
+        serializedVersion: 2
+        x: 3352
+        y: 2198.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b8c4dbe3df46e00800000000000000
+      internalID: 1037232260107766623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_5
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 2198.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6902a3078a7818010800000000000000
+      internalID: 1189380934109634710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1649.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bc0d63d9ffa1bc0800000000000000
+      internalID: -3811453083921101977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_7
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1649.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc800a75ce480c10800000000000000
+      internalID: 2019951042938047670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_8
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 1649.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a5f92b5708376a0800000000000000
+      internalID: -6452672598095471991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_9
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 1649.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f3a69f34c953a90800000000000000
+      internalID: -7334784602341753020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_10
+      rect:
+        serializedVersion: 2
+        x: 3352
+        y: 1649.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eadc3aaee5640c70800000000000000
+      internalID: 8936379636342643427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_11
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 1649.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1379e338f78ec3b60800000000000000
+      internalID: 7727306695021336369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a79954852e02950800000000000000
+      internalID: 6422381937383012930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_13
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1100.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1135e78f42c033360800000000000000
+      internalID: 7148070386494493457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_14
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 1100.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a04e1d05a6faa700800000000000000
+      internalID: 552525093056430244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_15
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 1100.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02c9b7edead855750800000000000000
+      internalID: 6293091836516604960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_16
+      rect:
+        serializedVersion: 2
+        x: 3352
+        y: 1100.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469aa5e536f8bea80800000000000000
+      internalID: -8436491820000958108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_17
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 1100.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c957667f86169cf0800000000000000
+      internalID: -245984324222494264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 551.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363007a4e571d2880800000000000000
+      internalID: -8634219216856153245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_19
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 551.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844cfa7b043ce9990800000000000000
+      internalID: -7377244456859220920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_20
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 551.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b18e990610c788d0800000000000000
+      internalID: -2844093438777982538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_21
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 551.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c723503b1658ab20800000000000000
+      internalID: 3145859014493153225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_22
+      rect:
+        serializedVersion: 2
+        x: 3352
+        y: 551.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749c4afad3f151300800000000000000
+      internalID: 222118106424985927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_23
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 551.4
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9724f92136c96ee0800000000000000
+      internalID: -1267263905668520037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2.4000244
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a338ddf903ee04660800000000000000
+      internalID: 7368150882986066746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_25
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 2.4000244
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90234d6e8235c95b0800000000000000
+      internalID: -5360318021341269495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_26
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 2.4000244
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5501a88bfb62240800000000000000
+      internalID: 4766708054929462713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_27
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 2.4000244
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89089e0ccf4d7b0f0800000000000000
+      internalID: -1101177401835421544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_28
+      rect:
+        serializedVersion: 2
+        x: 3352
+        y: 2.4000244
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2582cddd5e88463b0800000000000000
+      internalID: -5520136722398304174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pergamino_choroto_29
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 2.4000244
+        width: 838
+        height: 549.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1857e1b7663ca93f0800000000000000
+      internalID: -893186731159947903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

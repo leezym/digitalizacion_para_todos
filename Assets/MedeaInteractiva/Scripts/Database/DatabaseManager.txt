@@ -1,0 +1,500 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+using CryptSharp;
+
+public class DatabaseManager : Database
+{
+    private static DatabaseManager instance;
+
+    public static DatabaseManager Instance { get => instance; set => instance = value; }
+
+    public JsonData jsonData;
+    public ExtraData extraData;
+
+    public Module2 module2;
+    public MatrixActivity[] matrixActivity;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this; DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        SettingsExtraData();
+    }
+
+    public void SettingsExtraData()
+    {
+        jsonData = new JsonData();
+        extraData = new ExtraData();
+        module2 = new Module2();
+        matrixActivity = new MatrixActivity[16];
+
+        extraData.estado = GlobalData.Estado;
+        extraData.estado_M2 = GlobalData.EstadoM2; ;
+        extraData.matriz = "Matriz incompleta";
+    }
+
+    #region Encriptar
+    //https://www.the-art-of-web.com/php/blowfish-crypt/
+    //Referencia PHP
+    //<?PHP
+    //  $new_password = "<user input or randomly generated>";
+    //  $password_hash = better_crypt($new_password); // or password_hash($new_password, PASSWORD_DEFAULT);
+    //  // => store in database
+    //  ?>
+
+    //  ...
+
+    //  <?PHP
+    //  $password_entered = "<user input at login>";
+    //  $password_hash = "<retrieved from database based on username>";
+    //  if(password_verify($password_entered, $password_hash)) {
+    //    // password is correct
+    //  }
+    //?>
+    ////Fin referencia PHP
+
+    //Referencia c#
+    //string salt = BlowfishCrypter.Blowfish.GenerateSalt(
+    //new CrypterOptions()
+    //{
+    //    {CrypterOption.Variant,BlowfishCrypterVariant.Corrected },
+    //    {CrypterOption.Rounds,10 }
+    //});
+    //Debug.Log("Salt: " + salt);
+    //    string result = BlowfishCrypter.Blowfish.Crypt(password, salt);
+    //Debug.Log("Crypt: " + result);
+
+    //    bool isRight = BlowfishCrypter.CheckPassword(password, result);
+    //Debug.Log("Check: " + isRight);
+    //Fin referencia c#
+
+    public string CrypterPassword(string password)
+    {
+        string salt = BlowfishCrypter.Blowfish.GenerateSalt(
+        new CrypterOptions()
+        {
+        {CrypterOption.Variant,BlowfishCrypterVariant.Corrected },
+        {CrypterOption.Rounds,10 }
+        });
+
+        string result = BlowfishCrypter.Blowfish.Crypt(password, salt);
+
+        return result;
+    }
+
+    public bool VerifyPassword(string password, string blowfishCrypter)
+    {
+        bool isRight = BlowfishCrypter.CheckPassword(password, blowfishCrypter);
+        return isRight;
+    }
+
+    #endregion
+
+    public IEnumerator CheckUser()
+    {
+        if (connecting)
+        {
+            //Debug.Log("¡Hay una conexión en curso!");
+            yield break;
+        }
+
+        BookManager.Instance.OnError("");
+
+        connecting = true;
+        onConnection = false;
+
+        string hash = Md5Sum(userId + secretKey);
+
+        string parameters =
+            "&userId=" + userId +
+            "&hash=" + hash;
+
+        using (UnityWebRequest webRequest = WebRequest(url[0], parameters))
+        {
+            if (webRequest == null)
+                yield break;
+
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                //Debug.Log("Conexión fallida: " + webRequest.downloadHandler.text);
+                BookManager.Instance.OnError("¡Error de conexión!");
+                onConnection = false;
+                connecting = false;
+            }
+            else
+            {
+                if (webRequest.downloadHandler.text == "Usuario encontrado.")
+                {
+                    yield return new WaitForSeconds(0.01f);
+
+                    BookManager.Instance.OnCorrectUser();
+                }
+                else if(webRequest.downloadHandler.text == "Usuario no encontrado.")
+                {
+                    BookManager.Instance.OnError("¡El usuario no existe!");
+                }
+                else
+                {
+                    BookManager.Instance.OnError("¡El usuario ya tiene contraseña!");
+                }
+
+                onConnection = true;
+                connecting = false;
+            }
+        }
+    }
+
+    public IEnumerator Register()
+    {
+        if (connecting)
+        {
+            //Debug.Log("¡Hay una conexión en curso!");
+            yield break;
+        }
+
+        BookManager.Instance.OnError("");
+
+        connecting = true;
+        onConnection = false;
+
+        string hash = Md5Sum(userId + secretKey);
+
+        string blowfishCrypter = CrypterPassword(GlobalData.Password);
+
+        string parameters =
+            "&userId=" + userId +
+            "&password=" + blowfishCrypter +
+            "&hash=" + hash;
+
+        using (UnityWebRequest webRequest = WebRequest(url[1], parameters))
+        {
+            if (webRequest == null)
+                yield break;
+
+            yield return webRequest.SendWebRequest();
+            
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                //Debug.Log("Conexión fallida: " + webRequest.downloadHandler.text);
+                BookManager.Instance.OnError("¡Error de conexión!");
+                onConnection = false;
+                connecting = false;
+            }
+            else
+            {
+                if (webRequest.downloadHandler.text == "Contraseña registrada.")
+                {
+                    yield return new WaitForSeconds(0.01f);
+
+                    BookManager.Instance.popupCorrectRegisterPassword.SetActive(true);
+                    BookManager.Instance.OnRegisteredPassword();
+                }
+                else
+                {
+                    BookManager.Instance.OnError("¡El usuario ya tiene contraseña!");
+                }
+                
+                onConnection = true;
+                connecting = false;
+            }
+        }
+    }
+
+    public IEnumerator Login()
+    {
+        if (connecting)
+        {
+            //Debug.Log("¡Hay una conexión en curso!");
+            yield break;
+        }
+
+        BookManager.Instance.OnError("");
+
+        connecting = true;
+        onConnection = false;
+
+        string hash = Md5Sum(userId + secretKey);
+
+        extraData.hash = hash;
+
+        string parameters =
+            "&userId=" + userId +
+            "&hash=" + hash;
+
+        using (UnityWebRequest webRequest = WebRequest(url[2], parameters))
+        {
+            if (webRequest == null)
+                yield break;
+
+            yield return webRequest.SendWebRequest();
+            //Debug.Log("Conexión: " + webRequest.downloadHandler.text);
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                //Debug.Log("Conexión fallida: " + webRequest.downloadHandler.text);
+                BookManager.Instance.OnError("¡Error de conexión!");
+                onConnection = false;
+                connecting = false;
+            }
+            else
+            {
+                if (webRequest.downloadHandler.text == "Usuario no encontrado.")
+                {
+                    BookManager.Instance.OnError("Usuario no encontrado.");
+                }
+                else
+                {
+                    jsonData.LoadStringData(webRequest.downloadHandler.text);
+
+                    //string[] _result = webRequest.downloadHandler.text.Split('#');
+                    //if (VerifyPassword(GlobalData.Password, _result[0]))
+                        ///////////MODULO 1////////////////
+                        //GlobalData.PasswordEncrypted = _result[0];
+                        //GlobalData.PAD_Identifica = _result[1];
+                        //GlobalData.PAD_DefinePropositos = _result[2];
+                        //GlobalData.PAD_IdentificaYSenala = _result[3];
+                        //GlobalData.PAD_EstableceIndicadores = _result[4];
+                        //GlobalData.Reflexion = _result[5];
+                        //GlobalData.Objetivo_curso = _result[6];
+                        //GlobalData.Estado = _result[7];
+                        //GlobalData.TypeUser = _result[8];
+                        //GlobalData.Nombre = _result[9];
+                        ///////////MODULO 2////////////////
+                        //GlobalData.VUCA_Oportunidades = _result[10];
+                        //GlobalData.VUCA_Tecnica = _result[11];
+                        //GlobalData.VUCA_Sintomas = _result[12];
+                        //GlobalData.VUCA_Iniciativa = _result[13];
+                        //GlobalData.VUCA_Reflexion = _result[14];
+                        //GlobalData.EstadoM2 = _result[15];
+                        //string[] vuca_check = _result[16].Split('|');
+                        //GlobalData.LineaDeTiempoCMVCompletado = true ? vuca_check[0] == "1" : false;
+                        //GlobalData.SignificadoDeTerminoCompletado = true ? vuca_check[1] == "1" : false;
+                        //GlobalData.MatrizImpactoEsfuerzoCompletado = true ? vuca_check[2] == "1" : false;
+                        //GlobalData.MindFulnessCompletado = true ? vuca_check[3] == "1" : false;
+                        //GlobalData.EjercicioMatrizCompletado = true ? vuca_check[4] == "1" : false;
+
+                    if (VerifyPassword(GlobalData.Password, extraData.password))
+                    {
+                        GlobalData.TypeUser = extraData.typeUser;
+                        GlobalData.Nombre = extraData.nombre;
+                        GlobalData.PasswordEncrypted = extraData.password;
+                        /////////MODULO 1////////////////
+                        GlobalData.PAD_Identifica = extraData.pad_Identifica;
+                        GlobalData.PAD_DefinePropositos = extraData.pad_DefinePropositos;
+                        GlobalData.PAD_IdentificaYSenala = extraData.pad_IdentificaYSenala;
+                        GlobalData.PAD_EstableceIndicadores =extraData.pad_EstableceIndicadores;
+                        GlobalData.Reflexion = extraData.reflexion;
+                        GlobalData.Objetivo_curso = extraData.objetivo_curso;
+                        GlobalData.Estado = extraData.estado;
+                        /////////MODULO 2////////////////
+                        GlobalData.VUCA_Oportunidades = extraData.vuca_Oportunidades;
+                        GlobalData.VUCA_Tecnica = extraData.vuca_Tecnica;
+                        GlobalData.VUCA_Sintomas = extraData.vuca_Sintomas;
+                        GlobalData.VUCA_Iniciativa = extraData.vuca_Iniciativa;
+                        GlobalData.VUCA_Reflexion = extraData.vuca_Reflexion;
+                        GlobalData.EstadoM2 = extraData.estado_M2;
+                        GlobalData.LineaDeTiempoCMVCompletado = extraData.module2.LineaDeTiempoCMVCompletado;
+                        GlobalData.SignificadoDeTerminoCompletado = extraData.module2.LineaDeTiempoCMVCompletado;
+                        GlobalData.MatrizImpactoEsfuerzoCompletado = extraData.module2.LineaDeTiempoCMVCompletado;
+                        GlobalData.MindFulnessCompletado = extraData.module2.LineaDeTiempoCMVCompletado;
+                        GlobalData.EjercicioMatrizCompletado = extraData.module2.LineaDeTiempoCMVCompletado;
+
+                        yield return new WaitForSeconds(0.01f);
+
+                        connecting = false;
+                        BookManager.Instance.LoadData();
+                    }
+                    else
+                    {
+                        BookManager.Instance.OnError("Contraseña incorrecta.");
+                    }
+                }
+                
+                onConnection = true;
+                connecting = false;
+            }
+        }
+    }
+
+    public IEnumerator UpdateData()
+    {
+        if (connecting)
+        {
+            Debug.Log("¡Hay una conexión en curso!");
+            yield break;
+        }
+
+        BookManager.Instance.OnError("");
+
+        connecting = true;
+        onConnection = false;
+
+        /* string hash = Md5Sum(userId + secretKey);
+
+         string[] vuca_check = new string[5];
+         if(GlobalData.LineaDeTiempoCMVCompletado)
+             vuca_check[0] = "1";
+         else
+             vuca_check[0] = "0";
+         if (GlobalData.SignificadoDeTerminoCompletado)
+             vuca_check[1] = "1";
+         else
+             vuca_check[1] = "0";
+         if (GlobalData.MatrizImpactoEsfuerzoCompletado)
+             vuca_check[2] = "1";
+         else
+             vuca_check[2] = "0";
+         if (GlobalData.MindFulnessCompletado)
+             vuca_check[3] = "1";
+         else
+             vuca_check[3] = "0";
+         if (GlobalData.EjercicioMatrizCompletado)
+             vuca_check[4] = "1";
+         else
+             vuca_check[4] = "0";
+         string save_check = string.Join("|", vuca_check);
+
+         string parameters =
+             "&userId=" + userId +
+             "&password=" + GlobalData.PasswordEncrypted +
+             "&pad_Identifica=" + GlobalData.PAD_Identifica + ////////Modulo 1///////////////////
+             "&pad_DefinePropositos=" + GlobalData.PAD_DefinePropositos +
+             "&pad_IdentificaYSenala=" + GlobalData.PAD_IdentificaYSenala +
+             "&pad_EstableceIndicadores=" + GlobalData.PAD_EstableceIndicadores +
+             "&reflexion=" + GlobalData.Reflexion +
+             "&objetivo_curso=" + GlobalData.Objetivo_curso +
+             "&estado=" + GlobalData.Estado +
+             "&vuca_Oportunidades=" + GlobalData.VUCA_Oportunidades + ////////Modulo 2//////////////////
+             "&vuca_Tecnica=" + GlobalData.VUCA_Tecnica +
+             "&vuca_Sintomas=" + GlobalData.VUCA_Sintomas +
+             "&vuca_Iniciativa=" + GlobalData.VUCA_Iniciativa +
+             "&vuca_Reflexion=" + GlobalData.VUCA_Reflexion +
+             "&vuca_check=" + save_check +
+             "&estado_M2=" + GlobalData.EstadoM2 +
+             "&hash=" + hash;
+
+         using (UnityWebRequest webRequest = WebRequest(url[3], parameters))
+         {
+             if (webRequest == null)
+                 yield break;
+
+             yield return webRequest.SendWebRequest();
+
+             if (webRequest.isNetworkError || webRequest.isHttpError)
+             {
+                 // Debug.Log("Conexión fallida: " + webRequest.downloadHandler.text);
+                 BookManager.Instance.OnError("¡Error de conexión!");
+                 onConnection = false;
+                 connecting = false;
+             }
+             else
+             {
+                 //Debug.Log("Conexión establecida: " + webRequest.downloadHandler.text);
+                 onConnection = true;
+                 connecting = false;
+             }
+         }*/
+
+        module2.matrixActivities = matrixActivity;
+        module2.LineaDeTiempoCMVCompletado = GlobalData.LineaDeTiempoCMVCompletado;
+        module2.SignificadoDeTerminoCompletado = GlobalData.SignificadoDeTerminoCompletado;
+        module2.MatrizImpactoEsfuerzoCompletado = GlobalData.MatrizImpactoEsfuerzoCompletado;
+        module2.MindFulnessCompletado = GlobalData.MindFulnessCompletado;
+        module2.EjercicioMatrizCompletado = GlobalData.EjercicioMatrizCompletado;
+        extraData.module2 = module2;
+
+        string bodyJsonString = JsonUtility.ToJson(jsonData.extraData);
+
+        using (UnityWebRequest webRequest = WebRequest(url[0], jsonData.GetData()))
+        {
+            if (webRequest == null)
+                yield break;
+
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                onConnection = false;
+                connecting = false;
+            }
+            else
+            {
+                onConnection = true;
+                connecting = false;
+            }
+        }
+    }
+
+    public IEnumerator ChangePassword()
+    {
+        if (connecting)
+        {
+            //Debug.Log("¡Hay una conexión en curso!");
+            yield break;
+        }
+
+        BookManager.Instance.OnError("");
+
+        connecting = true;
+        onConnection = false;
+
+        string hash = Md5Sum(userId + secretKey);
+
+        string blowfishCrypter = CrypterPassword(GlobalData.Password);
+
+        string parameters =
+            "&userId=" + userId +
+            "&password=" + blowfishCrypter +
+            "&hash=" + hash;
+
+        using (UnityWebRequest webRequest = WebRequest(url[4], parameters))
+        {
+            if (webRequest == null)
+                yield break;
+
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                //Debug.Log("Conexión fallida: " + webRequest.downloadHandler.text);
+                BookManager.Instance.OnError("¡Error de conexión!");
+                onConnection = false;
+                connecting = false;
+            }
+            else
+            {
+                if (webRequest.downloadHandler.text == "Contraseña cambiada.")
+                {
+                    yield return new WaitForSeconds(0.01f);
+
+                    BookManager.Instance.popupCorrectChangePassword.SetActive(true);
+                    BookManager.Instance.OnRegisteredPassword();
+                }
+                else if (webRequest.downloadHandler.text == "El usuario no existe.")
+                {
+                    BookManager.Instance.OnError("¡El usuario no existe!");
+                }
+                else
+                {
+                    BookManager.Instance.OnError("¡El usuario no ha creado la contraseña!");
+                }
+
+                onConnection = true;
+                connecting = false;
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | %UNITY_WEB_NAME%</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", { onProgress: UnityProgress });
+    </script>
+    <script type="text/javascript">
+
+        var processedUnload = false;
+
+        window.onbeforeunload = function (e) {
+            doUnload();
+        };
+
+        window.onunload = function (e) {
+            doUnload();
+        };
+
+        function doUnload() {
+            if (processedUnload) return;
+
+            //gameInstance.SendMessage("ManagerRadicar", "Finish");
+            processedUnload = true;
+        }
+
+        function OpenUrl(url) {
+            window.open(url);
+        }
+
+		function PlayVideo(url) {   
+			document.getElementById('omitirvideo').style.display = "inline";
+            document.getElementById("IframeVideo").style.display = "inline";
+            var vid = document.getElementById("IframeVideo");
+            vid.src = url;
+            vid.addEventListener('ended', videoEndHandler, false);
+            vid.style.width = "960px";
+            vid.style.height = "600px";
+			//vid.style.zIndex="10";
+        }
+
+         function videoEndHandler(e) {
+		 	document.getElementById('omitirvideo').style.display = "none";
+            var vid = document.getElementById("IframeVideo");
+			document.getElementById("IframeVideo").style.display = "none";
+            vid.style.width = "0px";
+            vid.style.height = "0px";
+            vid.src = "";
+            gameInstance.SendMessage("BookManager", "StopVideo");
+        }
+
+		function CreatePDF(_text){
+			var pdf = new jspdf();
+			pdf.text(_text, 10, 10);
+			pdf.save('apuntes.pdf');
+		}
+
+        function Salir() {
+            
+            top.window.close();
+        }
+
+    </script>
+</head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+      </div>
+    </div>
+	<div class="classvideo1">
+	<video id="IframeVideo" style="display:none" src="" width="0" height="0" controls autoplay>
+              <source src="movie.mp4" type="video/mp4">
+
+          </video>
+		  <button id="omitirvideo" class="omitirvideo" onclick="videoEndHandler()">Omitir</button>
+      </div>
+  </body>
+</html>

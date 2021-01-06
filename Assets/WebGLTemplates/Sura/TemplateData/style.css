@@ -1,0 +1,41 @@
+.webgl-content * {border: 0; margin: 0; padding: 0}
+.webgl-content {position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+
+.webgl-content .logo, .progress, .background, .message1, .message2, .message3 {position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.webgl-content .logo {background: url('progressLogo.Light.png') no-repeat center / contain; width: 154px; height: 130px;}
+.webgl-content .progress {height: 18px; width: 141px; margin-top: 200px;}
+.webgl-content .progress .empty {background: url('progressEmpty.Dark.png') no-repeat right / cover; float: right; width: 100%; height: 100%; display: inline-block;}
+.webgl-content .progress .full {background: url('progressFull.Dark.png') no-repeat left / cover; float: left; width: 0%; height: 100%; display: inline-block;}
+
+.webgl-content .logo.Dark {background-image: url('progressLogo.Dark.png');}
+.webgl-content .progress.Dark .empty {background-image: url('progressEmpty.Dark.png');}
+.webgl-content .progress.Dark .full {background-image: url('progressFull.Dark.png');}
+
+.webgl-content .footer {margin-top: 5px; height: 38px; line-height: 38px; font-family: Helvetica, Verdana, Arial, sans-serif; font-size: 18px;} 
+.webgl-content .footer .webgl-logo, .title, .fullscreen {height: 100%; display: inline-block; background: transparent center no-repeat;} 
+.webgl-content .footer .webgl-logo {background-image: url('footer.png'); width: 960px; float: left;}
+.webgl-content .footer .title {margin-right: 10px; float: right;}
+.webgl-content .footer .fullscreen {background-image: url('fullscreen.png'); width: 38px; float: right;}
+
+.classvideo1 { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -52%);}
+.omitirvideo{
+	position: absolute;
+    background-color: #0033A1;
+    border: none;
+    color: white;
+	top: -4px; left: 382px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+	display: none;
+	z-index : 1000;
+}
+
+.webgl-content .background {background: url('background.png') no-repeat center / contain; width: 960px; height: 600px;}
+
+.webgl-content .message1 { background: url('message1.png') no-repeat center / contain; width: 596px; height: 104px; top: 48%; opacity:0;animation-name: A1;  animation-duration: 15s;  animation-iteration-count: infinite;}
+.webgl-content .message2 { background: url('message2.png') no-repeat center / contain; width: 570px; height: 220px; top: 48%; opacity:0;animation-name: A1;  animation-duration: 15s;  animation-iteration-count: infinite; animation-delay:5s;}
+.webgl-content .message3 { background: url('message3.png') no-repeat center / contain; width: 504px; height: 116px; top: 48%; opacity:0;animation-name: A1;  animation-duration: 15s;  animation-iteration-count: infinite; animation-delay:10s;}
+
+@keyframes A1 {0%   {opacity:0} 25% {opacity:1} 50%  {opacity:0} 100% {opacity:0}}x; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
